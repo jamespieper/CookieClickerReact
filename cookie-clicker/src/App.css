@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto+Condensed&family=Secular+One&display=swap');
+
+body {
+    background-color: #f0d7c0;
+    font-family: 'Roboto Condensed', sans-serif;
+    /* font-family: 'Secular One', sans-serif; */
+}
+
+
