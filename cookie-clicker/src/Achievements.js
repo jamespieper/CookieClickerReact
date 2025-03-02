@@ -6,8 +6,6 @@ export default function Achievement({ achievementList }) {
     const list = achievementList
 
     
-
-    //const list = ['fuck', 'shit', 'bitch']
     return (
         <div>
             <ListGroup>

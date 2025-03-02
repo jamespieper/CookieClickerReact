@@ -22,6 +22,7 @@ import prestigeTen from './assets/prestigeTen.png'
 
 import './Upgrades.css'
 
+
 export default function Upgrades({ currUser, localCookies, setLocalCookies, setLocalAchievements }) {
 
 
@@ -382,8 +383,8 @@ export default function Upgrades({ currUser, localCookies, setLocalCookies, setL
         <>
 
             <Card>
-                <Card.Title className='text-center mt-3'>
-                    Upgrades
+                <Card.Title className='text-center mt-4' id='title-upgrades'>
+                    UPGRADES
                 </Card.Title>
 
 

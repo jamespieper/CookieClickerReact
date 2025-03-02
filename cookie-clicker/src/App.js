@@ -16,10 +16,10 @@ function App() {
   return (
 
     
-      <Container 
-        className='d-flex align-items-center justify-content-center'
-        style={{minHeight: '100vh'}}
-      >
+      // <Container 
+      //   className=''
+      //   style={{minHeight: '100vh', width: '100%'}}
+      // >
         
         <div className='w-100'>
 
@@ -29,7 +29,7 @@ function App() {
                   
                   <Route path='/' element={
                     <PrivateRoute>
-                      <Dashboard/>
+                      <Dashboard style={{marginLeft: 'auto', marginRight: 'auto'}}/>
                     </PrivateRoute>
                   }
                   ></Route>
@@ -44,7 +44,7 @@ function App() {
             
         </div>
         
-      </Container>
+      //</Container>
 
 
     

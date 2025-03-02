@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto+Condensed&family=Secular+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&family=Press+Start+2P&family=Sigmar&display=swap');
+
 body {
-    background-color: #f0d7c0;
+    background: repeating-linear-gradient(45deg, #92c9b1, #92c9b1 20px, #b3e0d2 20px, #b3e0d2 40px);
     font-family: 'Roboto Condensed', sans-serif;
     /* font-family: 'Secular One', sans-serif; */
 }

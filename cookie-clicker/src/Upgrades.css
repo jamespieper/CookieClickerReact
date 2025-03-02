@@ -1,3 +1,8 @@
+#title-upgrades {
+
+  font-family: "Press Start 2P";
+}
+
 .upgrade-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -28,10 +28,11 @@ export default function Dashboard() {
     const [cookies, setCookies] = useState(0)
 
     const [achievements, setAchievements] = useState([10])
-    
 
-    const usersCollectionRef = query(collection(db, 'users'), orderBy("prestigeLvl", 'desc'), orderBy("cookies", 'desc'), limit(5))
 
+    const usersCollectionRef = query(collection(db, 'users'), orderBy("cookies", 'desc'), limit(10))
+
+    // removed orderBy("prestigeLvl", 'desc')
 
     useEffect(() => {
 
@@ -64,12 +65,12 @@ export default function Dashboard() {
 
             const docSnap = await getDoc((doc(db, 'users', currentUser.email)))
 
-            if(docSnap.exists()) {
+            if (docSnap.exists()) {
                 console.log("Achievements: " + docSnap.data().achievements)
-                
+
 
                 setAchievements(docSnap.data().achievements)
-                
+
 
             }
 
@@ -138,7 +139,7 @@ export default function Dashboard() {
         // make API call periodically here
 
         const q = doc(db, "users", currentUser.email)
-        
+
 
         await updateDoc(q, {
             //cookies: increment(1)
@@ -179,47 +180,67 @@ export default function Dashboard() {
 
         <>
             {/* <Alert iconMapping={{ success: <CheckCircleOutlineIcon fontSize="inherit" />, }} onClose={() => { }}>Achievement Unlocked!</Alert> */}
-            <Navbar bg='' style={{ backgroundColor: '#f0d7c0' }} variant="light" fixed="">
-                <Container>
-                    <Navbar.Brand href="/">Cookie Clicker</Navbar.Brand>
-                    <Nav className="justify-content-end">
 
-                        <Nav.Link href="">{currentUser.email}</Nav.Link>
-                        <Nav.Link href="" onClick={handleLogout}>Sign out</Nav.Link>
-                    </Nav>
-                </Container>
+
+            <Navbar className='d-flex justify-content-between px-5 py-3' bg='' style={{ backgroundColor: '#92c9b1', width: '100%' }} variant="light" fixed="" >
+                {/* <Container> */}
+
+                <img src={cookieImg} style={{ height: '40px' }} />
+                <div className="title" href="/" style={{ fontSize: '28px' }}>COOKIE CLICKER</div>
+                <Nav>
+
+                    <Nav.Link href="">{currentUser.email}</Nav.Link>
+                    <Nav.Link href="" onClick={handleLogout}>Sign out</Nav.Link>
+                </Nav>
+                {/* </Container> */}
             </Navbar>
+
+
 
 
             {error && <Alert variant='danger'>{error}</Alert>}
 
-            <div className='dashboard-container'>
 
-                <Leaderboard userList={users} />
+            <Container className='d-flex align-items-center justify-content-center'>
+                <div className='dashboard-container'>
 
-                <div style={{ textAlign: 'center' }}>
+                    <Leaderboard userList={users} />
 
-                    <Button className='cookie-main-img' style={{border:"solid 1px transparent"}} size="lg" variant="" onClick={clickCookie}>
-                        <img className='' src={cookieImg} alt="add item" width="300" />
-                    </Button>
+                    <div style={{ textAlign: 'center', padding: '0 50px' }}>
 
-                    <div className="cookie-count text-center">
-                        <h2>Cookies</h2>
-                        <h1>{cookies.toLocaleString()}</h1>
+                        <Button className='cookie-main-img' style={{ border: "solid 1px transparent" }} size="lg" variant="" onClick={clickCookie}>
+                            <img className='spinning-cookie' src={cookieImg} alt="add item" width="300" />
+                        </Button>
+
+                        <div className="cookie-count text-center">
+                            <br />
+                            <h2 id='cookies-label'>Cookies</h2>
+                            <h1 style={{}}>{cookies.toLocaleString()}</h1>
+                        </div>
                     </div>
+
+
+                    <Upgrades currUser={currentUser} localCookies={cookies} setLocalCookies={setCookies} setLocalAchievements={setAchievements} />
                 </div>
 
 
-                <Upgrades currUser={currentUser} localCookies={cookies} setLocalCookies={setCookies} setLocalAchievements={setAchievements} />
-            </div>
 
-            <h2 style={{textAlign: 'center'}}>
-                Achievements
-            </h2>
 
-            <Achievements achievementList={achievements}></Achievements>
+            </Container>
 
-            
+            <Container className='justify-content-center'>
+                <h2 className='title-achievements'style={{ textAlign: 'center' }}>
+                    ACHIEVEMENTS
+                </h2>
+                <Achievements achievementList={achievements}></Achievements>
+
+                <br/>
+                <br/>
+                <br/>
+            </Container>
+
+
+
 
         </>
     )
